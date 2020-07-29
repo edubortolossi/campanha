@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.br</groupId>
-    <artifactId>relogio</artifactId>
+    <artifactId>campanha</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>relogio</name>
-    <description>Api rest de relogios</description>
+    <name>campanha</name>
+    <description>Api rest de campanha</description>
 
     <properties>
         <java.version>1.8</java.version>
