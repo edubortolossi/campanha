@@ -1,0 +1,7 @@
+app:
+  resttemplate:
+    timeout: 30000
+
+info:
+  build:
+    version: '0.0.1-SNAPSHOT'
