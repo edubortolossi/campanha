@@ -57,12 +57,12 @@ public class CampanhaService {
         campanhaRepository.delete( campanhaEntity );
     }
 
-    public CampanhaResponse alterar( Long idRelogioEntity, CampanhaDto campanhaDto ) throws BusinessException, ParseException {
+    public CampanhaResponse alterar( Long idCampanha, CampanhaDto campanhaDto ) throws BusinessException, ParseException {
 
-        autenticar( idRelogioEntity );
+        autenticar( idCampanha );
 
         final CampanhaEntity campanhaEntity = CampanhaAdapter.requestToDomain( campanhaDto );
-        campanhaEntity.setId( idRelogioEntity );
+        campanhaEntity.setId( idCampanha );
         campanhaRepository.save( campanhaEntity );
 
         return CampanhaAdapter.domainToResponse( campanhaEntity );
