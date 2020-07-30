@@ -16,6 +16,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.event.annotation.BeforeTestExecution;
+import org.springframework.test.context.event.annotation.BeforeTestMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -44,6 +46,11 @@ public class CampanhaControllerTest {
 
     DateTimeFormatter parser = DateTimeFormatter.ofPattern( "dd/MM/uuuu" );
 
+    @BeforeTestMethod
+    private void setUp() {
+        campanhaRepository.deleteAll();
+    }
+
     private CampanhaDto createRequestMockDto() {
         return CampanhaDto.builder()
                 .time( Time.INTERNACIONAL )
@@ -63,7 +70,7 @@ public class CampanhaControllerTest {
 
     @Test
     public void criarCampanhaComDataExistenteSucess() throws Exception {
-
+        campanhaRepository.deleteAll();
         campanhaRepository.save( CampanhaAdapter.requestToDomain( createRequestMockDto(), LocalDate.parse( createRequestMockDto().getDataFimVigencia(), parser ) ) );
 
         mockMvc.perform( post( CRIAR_CAMPANHA_PATH )
